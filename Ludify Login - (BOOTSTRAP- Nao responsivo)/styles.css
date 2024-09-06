@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('Login (1).png');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+  }
+  
+  .form-container {
+    background-color: #2F2F2F;
+    border-radius: 15px;
+    width: 80vw;
+    max-width: 1042px;
+    height: 80vh;
+    max-height: 832px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+
+  }
+  form {
+    margin-top: -170px; /* Ajuste o valor conforme necessário */
+}
+  .form-container input{
+    background-color: #110F0F;
+    opacity: 65%;
+    border: none;
+    width: 549px;
+    height: 83px;
+    border-radius: 8px;
+    padding-left: 17px;
+    color: white;
+
+ }
+  
+  .logo-container {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+  }
+  
+  .login-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 64px;
+    font-weight: 700px;
+    line-height: 1.1;
+    position: absolute;
+    top: 7%;
+    left: 48%;
+    transform: translateX(-50%);
+    width: 110px;
+    color: #ffffff;
+    text-align: center;
+  }
+  button[type="submit"] {
+    font-family: 'Archivo', sans-serif;
+    font-size: 20px;
+    line-height: 1.1;
+    background-color: #0062FF;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    height: 56px;
+    width: 300px;
+    text-align: center;
+  }
+  .submit-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  
+}
+button[type="submit"]:focus {
+  outline: none;
+}
+button[type="submit"]:hover {
+  background-color: rgba(0, 98, 255, 0.8); /* Ajuste a opacidade da cor de fundo */
+ }
+
+.form-container input::placeholder {
+  font-family: 'Inter', sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+
+  color: #828282;
+ }
+
