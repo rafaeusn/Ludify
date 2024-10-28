@@ -1,0 +1,38 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+
+}
+body{
+    margin-top: 0px;
+    padding-top: 0px;
+    background-image: url("../imgs/fundo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0px;
+    padding: 0px;
+
+}
+#lbar{
+    border-radius: 35px;
+    background-color: #0D0D0D;
+}
+#rbar{
+    background-color: #2F2F2F;
+    border-radius: 15px;
+
+  }
+  
+  .imagem-destaque {
+    width: 100%; /* Define a largura para 100% do contêiner */
+    object-fit: cover;
+  }
+  
+  .imagem-kratos {
+    position: absolute; /* Posiciona a imagem kratos de forma absoluta */
+    top: -7.8vh; /* Ajuste conforme necessário */
+    left: 39%; /* Centraliza horizontalmente */
+    transform: translateX(-48.2%); /* Centraliza a imagem kratos */
+    width: 69vh; /* Ajuste a largura conforme necessário */
+  }
