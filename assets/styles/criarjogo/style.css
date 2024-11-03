@@ -43,7 +43,7 @@ form {
 }
 
 /* Substituído inputs por IDs específicos */
-#titulo-input, #desenvolvedora {
+#titulo-input, #confirmar-senha-input {
     background-color: #110F0F;
     opacity: 65%;
     width: 600px;
@@ -114,12 +114,6 @@ p {
 #titulo-input:invalid:not(:placeholder-shown), 
 #confirmar-senha-input:invalid:not(:placeholder-shown) {
     border-color: red;
-}
-
-#titulo-input:valid:not(:placeholder-shown), 
-#confirmar-senha-input:valid:not(:placeholder-shown) {
-    background-image: url('../../imgs/criarjogo/checked_green.png');
-    border-color: #0ea233;
 }
 
 #titulo-input:invalid:not(:placeholder-shown), 
@@ -308,7 +302,7 @@ form input::placeholder {
     }
 
     .submit {
-        width: 100%; /* O botão de submit também ocupa toda a largura */
+        width: 100%;
         margin-top: auto;
         margin-left: -5%;
     }
@@ -339,7 +333,6 @@ form input::placeholder {
         transform: translateX(-15vh);
     }
 }
-
 .dropdown-container {
     position: relative;
     display: inline-block;
@@ -349,40 +342,95 @@ form input::placeholder {
 .dropdown-button {
     background-color: #110F0F;
     color: #ffffff;
-    padding: 10px;
+    padding-left: 2%;
     opacity: 65%;
     border: 0.1px solid #71717188;
     cursor: pointer;
     width: 100%;
     font-size: 20px;
     height: 83px;
-    margin-bottom: 5%;
     box-sizing: border-box;
+    border-radius: 8px;
 }
-
 .dropdown-content {
     display: none; /* Esconde o dropdown inicialmente */
     position: absolute;
     background-color: #110F0F;
     min-width: 100%;
     border-radius: 8px;
+    margin-top: 0.2vh;
     padding: 10px; /* Ajuste o padding para algo mais leve */
-    border: 0.1px solid #af03a188;
-    z-index: 1; /* Coloca o dropdown acima de outros elementos */
-    top: 100%; /* Garante que o dropdown se posicione abaixo do botão */
+    border: 0.1px solid #71717188;
+    z-index: 1; /* Coloca o dropdown acima de outros elementos */ /* Garante que o dropdown se posicione abaixo do botão */
 }
 
 .dropdown-content label {
     display: flex; /* Alinha a checkbox e o texto em linha */
     font-size: 20px;
-    color: #e21515;
-    margin-bottom: 5px;
-    align-items: center; /* Alinha os itens no centro verticalmente */
+    color: #c2baba;
     padding: 5px 0; /* Espaçamento interno para um visual mais limpo */
+    font-weight: bold; 
+    margin-top: 0.5vh;
 }
 
 
 
 .dropdown-content.show {
     display: block; /* Mostra o dropdown quando a classe 'show' é adicionada */
+}
+.dropdown-container-ca {
+    position: relative;
+    display: inline-block;
+    width: 550px; /* Ajuste a largura conforme necessário */
+}
+
+.dropdown-button-ca {
+    background-color: #110F0F;
+    color: #ffffff;
+    padding-left: 2%;
+    opacity: 65%;
+    border: 0.1px solid #71717188;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+    height: 83px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+.dropdown-content-ca {
+    display: none; /* Esconde o dropdown inicialmente */
+    position: absolute;
+    background-color: #110F0F;
+    min-width: 100%;
+    border-radius: 8px;
+    margin-top: 0.2vh;
+    padding: 10px; /* Ajuste o padding para algo mais leve */
+    border: 0.1px solid #71717188;
+    z-index: 1; /* Coloca o dropdown acima de outros elementos */ /* Garante que o dropdown se posicione abaixo do botão */
+}
+
+.dropdown-content-ca label {
+    display: flex; /* Alinha a checkbox e o texto em linha */
+    font-size: 20px;
+    color: #c2baba;
+    padding: 5px 0; /* Espaçamento interno para um visual mais limpo */
+    font-weight: bold; 
+    margin-top: 0.5vh;
+}
+
+
+
+.dropdown-content-ca.show {
+    display: block; /* Mostra o dropdown quando a classe 'show' é adicionada */
+}
+#error-message {
+    color: #c75151;
+    margin-top: 32%;
+    border-radius: 5px;
+    margin-left: 5px;
+    display: none;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute; /* Faz com que a mensagem fique sobreposta */
+    z-index: 1; /* Coloca a mensagem acima de outros elementos */
 }
