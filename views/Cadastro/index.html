@@ -32,12 +32,14 @@
         <input 
         type="email" 
         name="email" 
+        id="email"
         placeholder="Endereço de E-mail"
         required>
         
         <input 
         type="password" 
         name="password" 
+        id="senha"
         placeholder="Senha"
         minlength="6"
         required>
@@ -45,12 +47,13 @@
         <input 
         type="password" 
         name="password" 
+        id="confirmarSenha"
         placeholder="Digite a senha novamente"
         minlength="6"
         required>
         <p>Senha de 6 dígitos</p>
         
-        <button class="submit">
+        <button class="submit" onclick="entrar()">
             ENTRAR
             
             <div class="icon"> 
@@ -104,3 +107,26 @@
 </body>
 
 </html>
+
+<script>
+  const entrar = async() =>{
+    var email = document.getElementById('email').value;
+    var senha = document.getElementById('senha').value;
+    var confirmarSenha = document.getElementById('confirmarSenha').value;
+
+    if (senha =! confirmarSenha){
+      alert('os campos da senha devem ser iguais');
+    }
+    const data={
+      email: email,
+      senha: senha
+    };
+    const response = await fetch(`http://localhost:3000/api/usuarios`, {
+      method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+    });
+  }
+</script>
