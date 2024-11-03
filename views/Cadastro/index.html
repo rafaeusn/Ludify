@@ -27,7 +27,7 @@
         </div>
         <h1 class="login-title">Cadastro</h1>
         </header>
-        <form action="login.html">
+        <form >
 
         <input 
         type="email" 
@@ -110,17 +110,22 @@
 
 <script>
   const entrar = async() =>{
+    console.log('salvar...');
     var email = document.getElementById('email').value;
     var senha = document.getElementById('senha').value;
     var confirmarSenha = document.getElementById('confirmarSenha').value;
 
-    if (senha =! confirmarSenha){
+    console.log(email);
+    console.log(senha);
+
+    if (senha !== confirmarSenha){
       alert('os campos da senha devem ser iguais');
     }
     const data={
       email: email,
       senha: senha
     };
+    console.log(JSON.stringify(data));
     const response = await fetch(`http://localhost:3000/api/usuarios`, {
       method: "POST",
                 headers: {
@@ -128,5 +133,6 @@
                 },
                 body: JSON.stringify(data),
     });
+    const result = await response.json();
   }
 </script>
