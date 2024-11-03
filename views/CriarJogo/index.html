@@ -61,16 +61,14 @@
 </div>
       
         <input 
-        type="password" 
-        name="password" 
-        id="confirmar-senha-input"
-        placeholder="Digite a senha novamente"
-        minlength="6"
+        type="text" 
+        name="desenvolvedora" 
+        id="desenvolvedora"
+        placeholder="Por quem foi desenvolvido o jogo?"
         required>
-        <p>Senha de 6 dígitos</p>
         
-        <button class="submit" onclick="entrar()">
-            ENTRAR
+        <button class="submit" onclick="adiconarJogo()" style="margin-left: 20%; margin-top: 5%;">
+            Adicionar Jogo
             
             <div class="icon"> 
               <svg
@@ -125,24 +123,37 @@
 </html>
 
 <script>
-  const entrar = async() =>{
-    console.log('salvar...');
-    var email = document.getElementById('email').value;
-    var senha = document.getElementById('senha').value;
-    var confirmarSenha = document.getElementById('confirmarSenha').value;
+  function getCheckedValues() {
+    // Seleciona todas as checkboxes com name="genero"
+    const checkboxes = document.querySelectorAll('input[name="genero"]:checked');
+    
+    // Cria um array com os valores das checkboxes marcadas
+    const checkedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
 
-    console.log(email);
-    console.log(senha);
+    // Transforma o array em uma string ou faz qualquer outra manipulação
+    console.log(checkedValues); // Exemplo de saída: ["PR", "SC"]
 
-    if (senha !== confirmarSenha){
-      alert('os campos da senha devem ser iguais');
-    }
+    // Se precisar salvar em uma variável global ou em outro lugar, faça isso aqui
+    return checkedValues;
+}
+
+  const adiconarJogo = async() =>{
+    console.log('adicionar...');
+    var titulo = document.getElementById('titulo-input').value;
+    var desenvolvedora = document.getElementById('desenvolvedora').value;
+    var genero = getCheckedValues();
+
+    console.log(titulo);
+    console.log(desenvolvedora);
+
+    
     const data={
-      email: email,
-      senha: senha
+      titulo: titulo,
+      desenvolvedora: desenvolvedora,
+      genero: genero
     };
     console.log(JSON.stringify(data));
-    const response = await fetch(`http://localhost:3000/api/usuarios`, {
+    const response = await fetch(`http://localhost:3000/api/jogos`, {
       method: "POST",
                 headers: {
                     "Content-Type": "application/json",

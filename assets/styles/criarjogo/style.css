@@ -43,7 +43,7 @@ form {
 }
 
 /* Substituído inputs por IDs específicos */
-#titulo-input, #confirmar-senha-input {
+#titulo-input, #desenvolvedora {
     background-color: #110F0F;
     opacity: 65%;
     width: 600px;
