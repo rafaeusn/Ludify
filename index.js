@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const usuarioRoutes = require('./routes/usuarioRoutes');
+const jogoRoutes = require('./routes/jogoRoutes');
 
 app.use(express.json());
 app.use(express.static('../Ludify'));
@@ -24,6 +25,7 @@ app.set('db', con);
 
 // Configuração das rotas
 app.use('/api', usuarioRoutes);
+app.use('/api', jogoRoutes);
 
 
 const port = 3000;

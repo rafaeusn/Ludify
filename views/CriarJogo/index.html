@@ -66,6 +66,13 @@
         id="desenvolvedora"
         placeholder="Por quem foi desenvolvido o jogo?"
         required>
+
+        <input 
+        type="text"
+        name="classificacao"
+        id="classificacao"
+        placeholder="digite a classificação indicativa"
+        required>
         
         <button class="submit" onclick="adiconarJogo()" style="margin-left: 20%; margin-top: 5%;">
             Adicionar Jogo
@@ -141,6 +148,7 @@
     console.log('adicionar...');
     var titulo = document.getElementById('titulo-input').value;
     var desenvolvedora = document.getElementById('desenvolvedora').value;
+    var classificacao = document.getElementById('classificacao').value;
     var genero = getCheckedValues();
 
     console.log(titulo);
@@ -149,6 +157,7 @@
     
     const data={
       titulo: titulo,
+      classificacao: classificacao,
       desenvolvedora: desenvolvedora,
       genero: genero
     };
