@@ -12,6 +12,18 @@
 
 
     <link rel="stylesheet" href="../../assets/styles/dashboard/style.css">
+    <script>
+        window.onload = function() {
+    if (window.innerWidth <= 768) {
+        document.body.innerHTML = "<h1>Acesso restrito. Este site só pode ser acessado em computadores e notebooks.</h1>";
+        document.body.style.textAlign = "center";
+        document.body.style.padding = "20px";
+        document.body.style.fontSize = "24px";
+        document.body.style.backgroundColor = "#171717";
+        document.body.style.color = "#ffffff";
+    }
+};
+    </script>
 </head>
 <body>
     <div class="container-fluid" id="fundo">
