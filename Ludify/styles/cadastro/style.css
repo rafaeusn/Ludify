@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    background-image: url('../../assets/imgs/cadastro/Login\ \(1\).png');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    color: #717171;
+    font-family: Inter;
+    margin: 0;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-weight: 500;
+    color: #fff;
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+.text-white {
+    color: #fff;
+}
+form {
+    display: flex;
+    margin: auto;
+    margin-block: 30px;
+    width: min(550px, 90vw);
+    height: min(350px, 90vw);
+    flex-wrap: wrap;
+}
+form input{
+    background-color: #110F0F;
+    opacity: 65%;
+    width: 600px;
+    height: 83px;
+    border-radius: 8px;
+    padding-left: 20px;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: normal;
+    text-align: left;
+    margin-top: -15px;
+    margin-bottom: -3%;
+    padding: 2%;
+    border-radius: 15px;
+    background-color: #1C1C1E;
+    border: 0.1px solid #71717188;
+    box-shadow: 0 0 0 3px transparent; /* Adiciona uma sombra de borda inicial invisível */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transição suave para a borda */
+    box-sizing: border-box; /* Garante que o padding não afete o tamanho total do elemento */
+}
+form input:focus{
+    border-color: #fff; /* Borda branca ao foco */
+    outline: none;
+}
+
+form input {
+    background-color: #110F0F;
+    opacity: 65%;
+    width: 600px;
+    height: 83px;
+    border-radius: 8px;
+    padding-left: 20px;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: normal;
+    text-align: left;
+    margin-top: -25px;
+    margin-bottom: 5%;
+  }
+
+.ou {
+    position: relative;
+    top: 20px;
+}
+.ou::before {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    content: '';
+    left: 0;
+    top: 60%;
+    background-image: linear-gradient(
+        to right, 
+        #71717155 0 40%, transparent 40% 60%, #71717155 60%
+    );
+}
+.or {
+    position: relative;
+}
+.or::before {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    content: '';
+    left: 0;
+    top: 60%;
+    margin-top: -30vh;
+    background-image: linear-gradient(
+        to right, 
+        #71717155 0 40%, transparent 40% 60%, #71717155 60%
+    );
+}
+p {
+    font-size: small;
+    text-align: left;
+    margin-top: -20px;
+    margin-left: 5px;
+}
+
+input:invalid:not(:placeholder-shown) {
+    border-color: red;
+
+}
+input:valid:not(:placeholder-shown) {
+    background-image: url(../../imgs/cadastro/checked_green.png);
+    border-color: #0ea233;
+}
+input:invalid:not(:placeholder-shown), 
+input:valid:not(:placeholder-shown) {
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px);
+}
+input:invalid:not(:placeholder-shown) + p {
+    color: #a20e0e;
+}
+input:valid:not(:placeholder-shown) + p {
+    color: #0ea233;
+}
+input:invalid ~ button[type="submit"] {
+    opacity: .6;
+    pointer-events: none;
+}
+form input::placeholder {
+    color: #828282;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+
+  }
+.form-container {
+    background-color: #2F2F2F;
+    border-radius: 15px;
+    width: 90vw;
+    max-width: 1042px;
+    max-height: 832px;
+    height: 80vh;
+    margin: 0 auto;
+    display: flex;
+    padding: 2rem;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden; /* Garante que o conteúdo não ultrapasse o container */
+}
+
+@media (max-width: 600px) {
+    .form-container {
+        width: 95%;
+        padding: 10px;
+    }
+}
+@media (max-width: 600px) {
+    .submit {
+        margin-top: -30px;
+        margin-left: 5%;
+    }
+
+    .icon-login {
+        transform: translateX(-9vh); /* Ajuste o valor conforme necessário */
+    }
+}
+
+.logo-container {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+  }
+  .login-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 64px;
+    line-height: 1.1;
+    margin-top: 0.1rem;
+    margin-bottom: 2vh;
+    color: #ffffff;
+    text-align: center;
+  }
+ .submit {
+    top: 2vh;
+    font-family: 'Archivo', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    background: #0062FF;
+    color: white;
+    padding: 0.35em;
+    border-radius: 0.9em;
+    border: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    height: 56px;
+    width: 279px;
+    cursor: pointer;
+    left: 5%;
+    padding-left: 10vh;
+  }
+  
+.submit:focus {
+  outline: none;
+}
+
+.submit .icon {
+  background: rgb(0, 34, 89);
+  margin-left: 2em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #0062FF;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+.submit:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.submit .icon svg {
+  width: 2.1em;
+  transition: transform 0.3s;
+  color: #0062FF;
+}
+.submit:hover .icon svg {
+  transform: translateX(0.1em);
+}
+.submit:active .icon {
+  transform: scale(0.95);
+}
+.icon-login{
+    margin-top: 10%;
+    margin-left: 5%;
+}
+.svg-container {
+    display: inline-block;
+    margin-top: 4vh;
+    margin-left: 0vh;
+    cursor: pointer;
+  }
+  
+  .svg-container + .svg-container {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .parent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .svg-container {
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .svg-container + .svg-container {
+    cursor: pointer;
+  }
+  .links a{
+    margin-top: 1vh;
+    color: rgb(255, 255, 255);
+    margin-left: -2.5vh;
+  }
+  @media (max-width: 600px) {
+    form input {
+        width: 100%;
+        margin-top: auto;
+    }
+
+    .submit {
+        width: 100%; /* O botão de submit também ocupa toda a largura */
+        margin-top: auto;
+        margin-left: -5%;
+    }
+
+}
+@media (max-width: 375px) {
+    .form-container {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        overflow: hidden;
+    }
+
+    form input {
+        width: 100%;
+        margin-top: -15px;
+        height: 70px;
+    }
+
+    .submit {
+        width: 100%;
+        height: 50px;
+        margin-left: -15px;
+        padding-left: 0;
+    }
+
+    .icon-login {
+        transform: translateX(-15vh);
+    }
+    
+}
+.message {
+    color: red;
+}
+.error-message {
+    color: red;
+    margin-bottom: 0.5%;
+}

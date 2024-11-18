@@ -1,0 +1,179 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000 !important; /* Garantir que o fundo seja preto */
+    color: #fff; /* Cor do texto */
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2F2F2F;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .logo img {
+    width: 70px;
+}
+
+/* Ajustando a posição da lista de navegação */
+.navbar nav {
+    flex-grow: 1;  /* Faz com que a navegação ocupe o máximo de espaço disponível */
+    display: flex;
+    justify-content:left;
+    margin-left: 40%;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.user-profile a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(115, 195, 206, 0.5);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo para o título do gênero */
+.titulo-genero {
+    text-align: center;
+    padding: 50px;
+}
+
+.titulo-genero h1 {
+    font-size: 2.5rem;
+}
+
+/* Lista de Filmes */
+.lista-filmes {
+    display: flex;
+    flex-wrap: wrap;  /* Permite que os itens que não cabem na linha atual quebrem para a próxima linha */
+    gap: 20px;        /* Espaçamento entre os filmes */
+    padding: 20px;
+    justify-content: center; /* Garante que os filmes comecem alinhados à esquerda */
+}
+.descricao-filme {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 3 colunas de tamanho igual */
+    gap: 20px; /* Espaço entre os itens */
+}
+.filme-item {
+    width: 220px;    /* Largura fixa para cada item */
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    color: #fff;
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+    flex-shrink: 0;   /* Evita que os itens encolham */
+    position: relative;
+    text-align: center; /* Centraliza os elementos dentro do item */
+    margin-bottom: 20px; /* Dá espaço entre os itens de jogo */
+}
+
+/* Garante que todas as imagens tenham o mesmo tamanho */
+.filme-item img {
+    width: 100%;          /* As imagens vão preencher toda a largura do item */
+    height: 200px;        /* Defina uma altura fixa para as imagens */
+    object-fit: cover;    /* A propriedade 'cover' ajusta a imagem sem distorcer, mas pode cortar a imagem */
+    border-radius: 10px;  /* Se você quiser bordas arredondadas nas imagens */
+}
+
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .filme-item {
+        width: 45%; /* 2 colunas em telas médias */
+    }
+}
+
+@media (max-width: 480px) {
+    .filme-item {
+        width: 100%; /* 1 coluna em telas pequenas */
+    }
+}
+.dropdown-item {
+    background-color: #000000 !important; /* Fundo preto para os itens */
+    color: #fff !important; /* Cor do texto branca */
+}
+
+.dropdown-item:hover {
+    background-color: rgb(115, 195, 206) !important; /* Cor do fundo quando passar o mouse */
+    color: #000000 !important; /* Cor do texto quando passar o mouse */
+}
+.navbar .nav-item.dropdown .dropdown-menu {
+    background-color: #000000 !important; /* Fundo preto */
+}
+.btn-bloqueado {
+    display: inline-block;   /* Garante que o botão tenha o comportamento de bloco */
+    margin-top: 10px;         /* Dá um espaçamento acima do botão */
+    padding: 10px 20px;       /* Tamanho do botão */
+    background-color: #007bff; /* Cor do fundo do botão */
+    color: white;            /* Cor do texto */
+    font-size: 16px;         /* Tamanho da fonte */
+    border-radius: 5px;      /* Borda arredondada */
+    text-decoration: none;   /* Remove a sublinha do link */
+    transition: background-color 0.3s ease; /* Animação suave na cor de fundo */
+}
+
+.btn-bloqueado:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}

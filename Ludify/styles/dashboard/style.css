@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+
+}
+body{
+    margin-top: 0px;
+    padding-top: 0px;
+    background-image: url("../../assets/imgs/dashboard/fundo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0px;
+    padding: 0px;
+
+}
+#lbar{
+    border-radius: 35px;
+    background-color: #0D0D0D;
+}
+#rbar {
+  background-color: #2F2F2F;
+  border-radius: 15px;
+  display: flex; /* Flexbox para posicionamento */
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo da coluna */
+  padding: 1rem;
+}
+  
+  .imagem-destaque {
+    width: 100%; /* Define a largura para 100% do contêiner */
+    object-fit: cover;
+  }
+  
+  .imagem-kratos {
+    position: absolute; /* Posiciona a imagem kratos de forma absoluta */
+    top: -7.8vh; /* Ajuste conforme necessário */
+    left: 39%; /* Centraliza horizontalmente */
+    transform: translateX(-48.2%); /* Centraliza a imagem kratos */
+    width: 69vh; /* Ajuste a largura conforme necessário */
+  }
+  .logar .icon {
+    background: rgb(62, 71, 85);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #2d3138;
+    right: 0.3em;
+    transition: all 0.3s;
+  }
+  
+  .logar:hover .icon {
+    width: calc(100% - 0.6em);
+  }
+  
+  .logar .icon svg {
+    width: 2.1em;
+    transition: transform 0.3s;
+    color: #fafafa;
+  }
+  .logar:hover .icon svg {
+    transform: translateX(0.1em);
+  }
+  .logar:active .icon {
+    transform: scale(0.95);
+  }
+  .logar {
+    font-family: 'Archivo', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    background: #000000;
+    color: white;
+    padding: 0.35em;
+    border-radius: 0.9em;
+    border: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    height: 56px;
+    width: 80%;  /* Ajusta a largura para ser proporcional à tela */
+    max-width: 300px; /* Limita a largura máxima */
+    cursor: pointer;
+    margin: 10px 0;
+    justify-content: center; /* Centraliza o conteúdo do botão */
+  }
+  .logar:focus {
+    outline: none;
+  }
+  .carousel-inner img {
+    margin-top: 10%;
+    border-radius: 30px; /* Borda arredondada */
+    object-fit: cover;   /* Mantém o enquadramento da imagem */
+    height: 200px;       /* Altura fixa */
+}
+#text {
+  margin-top: 2rem;
+  margin-bottom: -1%;
+  margin-left: 4.2rem;
+}
+#text2 {
+  margin-bottom: 0.5%;
+}
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%; /* Ajusta a largura da área clicável */
+    transform: translateX(-50%); /* Mantém o botão centrado */
+}
+
+.carousel-control-prev {
+    left: 1%; /* Move o botão para a esquerda */
+    top: 10%;
+}
+
+.carousel-control-next {
+    right: -1%; /* Move o botão para a direita */
+    top: 10%;
+}
+#bemvindo {
+  text-align: center;
+  color: #fafafa;
+  margin-top: 2%;
+  font-size: 1.2em;
+  word-wrap: break-word; /* Garante que o texto se ajusta à tela */
+}
