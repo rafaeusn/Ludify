@@ -20,7 +20,7 @@ CREATE TABLE Jogo (
 );
 
 CREATE TABLE Aluguel (
-    ID_Aluguel INT PRIMARY KEY,
+    ID_Aluguel INT AUTO_INCREMENT PRIMARY KEY,
     Data_Inicio DATE,
     Data_Fim DATE,
     ID_Jogo INT,
