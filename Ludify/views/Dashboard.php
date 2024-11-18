@@ -2,35 +2,74 @@
 session_start();
 
 // Configurações de conexão com o banco de dados
-$servername = "localhost"; // Substitua pelo seu endereço de servidor
-$username = "root";        // Substitua pelo seu nome de usuário
-$password = "PUC@1234";    // Substitua pela sua senha
-$dbname = "Ludify";       // Nome do banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "PUC@1234";
+$dbname = "Ludify";
 
 // Criando a conexão
 $conn = new mysqli($servername, $username, $password, $dbname);
+
 // Verificando a conexão
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
-if (!isset($_SESSION['user'])) {
-  // Redireciona para o login caso o usuário não esteja autenticado
-  header("Location: login.php");
-  exit();
-}
-$email = $_SESSION['user']; // Recupera o nome do usuário da sessão
-// Query para obter jogos do banco de dados
-$sql = "SELECT Imagem FROM Jogo";
-$result = $conn->query($sql);
 
-$jogos = [];
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $jogos[] = $row['Imagem'];
-    }
+// Verifica se o usuário está logado
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
 }
+
+$email = $_SESSION['user']; // Recupera o e-mail do usuário logado
+
+// Recupera o ID do usuário com base no e-mail
+$queryUsuario = "SELECT ID_Usuario FROM Usuario WHERE Email = ?";
+$stmt = $conn->prepare($queryUsuario);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->bind_result($id_usuario);
+$stmt->fetch();
+$stmt->close();
+
+// Inicializa arrays
+$jogos = [];
+$ultimosJogos = [];
+
+if ($id_usuario) {
+    // Query para obter imagens de todos os jogos
+    $sqlJogos = "SELECT Imagem FROM Jogo";
+    $resultJogos = $conn->query($sqlJogos);
+
+    if ($resultJogos->num_rows > 0) {
+        while ($row = $resultJogos->fetch_assoc()) {
+            $jogos[] = $row['Imagem'];
+        }
+    }
+
+    $queryUltimosJogos = "
+    SELECT Jogo.Imagem, Jogo.Titulo, Genero.Nome AS Genero
+    FROM Aluguel
+    INNER JOIN Jogo ON Aluguel.ID_Jogo = Jogo.ID_Jogo
+    INNER JOIN Genero ON Jogo.ID_Genero = Genero.ID_Genero
+    WHERE Aluguel.ID_Usuario = ?
+    ORDER BY Aluguel.Data_Inicio DESC
+    LIMIT 2
+";
+    $stmtUltimosJogos = $conn->prepare($queryUltimosJogos);
+    $stmtUltimosJogos->bind_param("i", $id_usuario);
+    $stmtUltimosJogos->execute();
+    $resultUltimosJogos = $stmtUltimosJogos->get_result();
+
+    while ($row = $resultUltimosJogos->fetch_assoc()) {
+        $ultimosJogos[] = $row;
+    }
+    $stmtUltimosJogos->close();
+}
+
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -148,31 +187,27 @@ $conn->close();
     </a>
 </div>
 
-              <div class="row ml-4">
-                <div class="h5 ml-5 text-white mt-5" id="text2">Ultimos Downloads</div>
-                <div class="col-5 ml-4 p-3"><div class="container" style="background-color: #2f2f2f; border-radius: 26px;">
-                  <div class="row pt-3">
-                    <div class="col-7 p-3"><img src="../assets/imgs/dashboard/cs2.png" style="width: 100%;" alt=""></div>
-                    <div class="col-5 p-3">
-                      <div class="h5 text-white">Counter Strike 2</div>
-                      <div class="container bg-dark text-white w-50">Tiro</div>
-                    </div>
-                  </div>
-                </div>
-               </div>
+<div class="row ml-4">
+    <div class="h5 ml-5 text-white mt-5" id="text2">Últimos Downloads</div>
 
-               <div class="col-5 p-3"><div class="container" style="background-color: #2f2f2f; border-radius: 26px;">
-                <div class="row pt-3">
-                  <div class="col-7 p-3"><img src="../assets/imgs/dashboard/stardewvalley.png" style="width: 100%;" alt=""></div>
-                  <div class="col-5 p-3">
-                    <div class="h5 text-white">Stardew Valley</div>
-                    <div class="container bg-dark text-white w-50">Indie</div>
-                  </div>
+    <?php foreach ($ultimosJogos as $jogo): ?>
+        <div class="col-md-5 p-3">
+            <div class="jogo-card">
+                <div class="row no-gutters">
+                    <div class="col-6">
+                        <img src="<?php echo htmlspecialchars($jogo['Imagem']); ?>" alt="Imagem do Jogo" class="jogo-imagem">
+                    </div>
+                    <div class="col-6 d-flex flex-column justify-content-center">
+                        <div class="jogo-titulo text-truncate"><?php echo htmlspecialchars($jogo['Titulo']); ?></div>
+                        <div class="jogo-genero"><?php echo htmlspecialchars($jogo['Genero']); ?></div>
+                    </div>
                 </div>
-              </div>
-             </div>
-                
-              </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
 
             </div>
             <div class="col-3 mt-3" id="rbar">

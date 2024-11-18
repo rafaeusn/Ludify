@@ -17,14 +17,16 @@ $idGenero = isset($_GET['id_genero']) ? intval($_GET['id_genero']) : 0;
 // Se o idGenero for 0, significa que queremos todos os jogos
 if ($idGenero > 0) {
     // Filtrando por gênero
-    $sql = "SELECT Jogo.Titulo, Jogo.Imagem FROM Jogo WHERE Jogo.ID_Genero = ?"; 
+    $sql = "SELECT Jogo.ID_Jogo, Jogo.Titulo, Jogo.Imagem FROM Jogo WHERE Jogo.ID_Genero = ?"; 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $idGenero);
 } else {
     // Mostrando todos os jogos
-    $sql = "SELECT Jogo.Titulo, Jogo.Imagem FROM Jogo"; 
+    $sql = "SELECT Jogo.ID_Jogo, Jogo.Titulo, Jogo.Imagem FROM Jogo"; 
     $stmt = $conn->prepare($sql);
-}
+    if (!$stmt) {
+        die("Erro na preparação da query: " . $conn->error);
+}}
 
 $stmt->execute();
 $result = $stmt->get_result();
@@ -94,21 +96,29 @@ $result = $stmt->get_result();
 
     <section class="lista-filmes">
     <div class="descricao-filme">
-        <?php
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '<div class="filme-item">';
-                echo '<img src="../images/' . htmlspecialchars($row["Imagem"]) . '" alt="' . htmlspecialchars($row["Titulo"]) . '">';
-                echo '<p>' . htmlspecialchars($row["Titulo"]) . '</p>';
-                // Adicionando o botão "Baixar"
-                echo '<button class="btn btn-primary btn-bloqueado">Baixar</button>';
-                echo '</div>';
+    <?php
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="filme-item">';
+            echo '<img src="../images/' . htmlspecialchars($row["Imagem"]) . '" alt="' . htmlspecialchars($row["Titulo"]) . '">';
+            echo '<p>' . htmlspecialchars($row["Titulo"]) . '</p>';
+            if (isset($row["ID_Jogo"])) {
+                echo '<form action="alugar.php" method="POST" style="display:inline;">';
+                echo '<input type="hidden" name="id_jogo" value="' . htmlspecialchars($row["ID_Jogo"]) . '">';
+                echo '<button type="submit" class="btn btn-primary">Baixar</button>';
+                echo '</form>';
+            } else {
+                echo '<p>Erro: ID do jogo não encontrado.</p>';
             }
-        } else {
-            echo "<p>Nenhum jogo encontrado.</p>";
+            echo '</div>';
         }
-        ?>
-    </div>
+    } else {
+        echo "<p>Nenhum jogo encontrado.</p>";
+    }
+    ?>
+</div>
+
+
 </section>
 
 
